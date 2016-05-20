@@ -1,0 +1,14 @@
+sudo: required
+env:
+  global:
+    - PONY_VERSION=$(date +%Y-%m-%d)
+services:
+- docker
+before_install:
+- bash tools/install.sh
+script:
+- bash tools/script.sh
+after_failure:
+- bash tools/failure.sh
+after_success:
+- bash tools/success.sh

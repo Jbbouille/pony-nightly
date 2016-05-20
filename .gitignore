@@ -1,0 +1,16 @@
+tags
+.DS_Store
+*.o
+*.obj
+*.s
+*.ll
+*.bc
+*.a
+*.exe
+*.sublime*
+.*.swp
+*.dSYM/
+build/
+work/
+output/
+_ReSharper.*
