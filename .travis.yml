@@ -6,9 +6,14 @@ services:
 - docker
 before_install:
 - bash tools/install.sh
+before_script:
+- bash tools/build-images.sh
 script:
 - bash tools/script.sh
 after_failure:
 - bash tools/failure.sh
 after_success:
 - bash tools/success.sh
+branches:
+  only:
+    - master
