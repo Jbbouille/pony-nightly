@@ -4,16 +4,12 @@ env:
     - PONY_VERSION=$(date +%Y-%m-%d)
 services:
 - docker
-before_install:
-- bash tools/install.sh
+install:
+- bash install.sh
 before_script:
-- bash tools/build-images.sh
+- bash before_script.sh
 script:
-- bash tools/script.sh
-after_failure:
-- bash tools/failure.sh
-after_success:
-- bash tools/success.sh
+- bash script.sh
 branches:
   only:
     - master
