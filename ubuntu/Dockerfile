@@ -13,6 +13,9 @@ RUN git clone https://github.com/ponylang/ponyc.git /home/pony/ponyc
 
 COPY main.sh /home/pony/
 
+RUN curl -fL https://getcli.jfrog.io | sh && \				
+	cp jfrog /usr/bin/
+
 RUN gem install fpm
 
 ENTRYPOINT bash /home/pony/main.sh
