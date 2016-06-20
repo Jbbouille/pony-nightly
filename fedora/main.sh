@@ -33,6 +33,10 @@ if [[ $? -ne 0 ]]; then
 	exit 1
 fi
 
+PONY_TEMP_VERSION=$(date +%Y_%m_%d)
+
+mv ponyc-$PONY_TEMP_VERSION-1.x86_64.rpm ponyc-$PONY_VERSION.x86_64.rpm
+
 dnf install -y ponyc-$PONY_VERSION-1.x86_64.rpm
 if [[ $? -ne 0 ]]; then
 	echo "Error during the building of Pony"
