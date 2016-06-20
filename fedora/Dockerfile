@@ -25,4 +25,4 @@ COPY main.sh /home/pony/
 
 RUN gem install fpm
 
-#ENTRYPOINT sh /home/pony/main.sh
+ENTRYPOINT sh /home/pony/main.sh
