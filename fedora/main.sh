@@ -61,7 +61,7 @@ if [[ $? -ne 0 ]]; then
 	exit 1
 fi
 
-curl -T ponyc-$PONY_VERSION-1.x86_64.rpm -u$BINTRAY_USER:$BINTRAY_TOKEN -H "X-Bintray-Publish: 1" https://api.bintray.com/content/$BINTRAY_USER/rpm/ponyc-nightly/$PONY_VERSION/
+curl -T ponyc-$PONY_VERSION.x86_64.rpm -u$BINTRAY_USER:$BINTRAY_TOKEN -H "X-Bintray-Publish: 1" https://api.bintray.com/content/$BINTRAY_USER/rpm/ponyc-nightly/$PONY_VERSION/
 if [[ $? -ne 0 ]]; then
 	echo "Error during upload of file"
 	exit 1
