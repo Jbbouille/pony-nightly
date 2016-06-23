@@ -54,13 +54,13 @@ if [[ $? -ne 0 ]]; then
 	exit 1
 fi
 
-curl -H "Content-Type: application/json" -u$BINTRAY_USER:$BINTRAY_TOKEN -X POST -d '{"name": "'$PONY_VERSION'","desc": "This is the ponyc nightly"}' https://api.bintray.com/packages/$BINTRAY_USER/generic/ponyc-nightly-arch/versions
+curl -H "Content-Type: application/json" -u$BINTRAY_USER:$BINTRAY_TOKEN -X POST -d '{"name": "'$PONY_VERSION'","desc": "This is the ponyc nightly"}' https://api.bintray.com/packages/$BINTRAY_USER/archlinux/ponyc-nightly/versions
 if [[ $? -ne 0 ]]; then
 	echo "Error during upload of version"
 	exit 1
 fi
 
-curl -T ponyc-$PONY_VERSION-1-x86_64.pkg.tar.xz -u$BINTRAY_USER:$BINTRAY_TOKEN -H "X-Bintray-Publish: 1" https://api.bintray.com/content/$BINTRAY_USER/generic/ponyc-nightly-arch/$PONY_VERSION/
+curl -T ponyc-$PONY_VERSION-1-x86_64.pkg.tar.xz -u$BINTRAY_USER:$BINTRAY_TOKEN -H "X-Bintray-Publish: 1" https://api.bintray.com/content/$BINTRAY_USER/archlinux/ponyc-nightly/$PONY_VERSION/
 if [[ $? -ne 0 ]]; then
 	echo "Error during upload of file"
 	exit 1
