@@ -33,12 +33,10 @@ if [[ $? -ne 0 ]]; then
 	exit 1
 fi
 
-mv ponyc-$PONY_VERSION-1-x86_64.pkg.tar.xz ponyc-$PONY_VERSION-x86_64.pkg.tar.xz
-
 # Remove existing ponyc
 rm -rf /usr/bin/ponyc /usr/lib/libponyc.a /usr/lib/libponyrt.a
 
-pacman -U --noconfirm ponyc-$PONY_VERSION-x86_64.pkg.tar.xz
+pacman -U --noconfirm ponyc-$PONY_VERSION-1-x86_64.pkg.tar.xz
 if [[ $? -ne 0 ]]; then
 	echo "Error during the building of Pony"
 	exit 1
@@ -62,7 +60,7 @@ if [[ $? -ne 0 ]]; then
 	exit 1
 fi
 
-curl -T ponyc-$PONY_VERSION-x86_64.pkg.tar.xz -u$BINTRAY_USER:$BINTRAY_TOKEN -H "X-Bintray-Publish: 1" https://api.bintray.com/content/$BINTRAY_USER/generic/ponyc-nightly-arch/$PONY_VERSION/
+curl -T ponyc-$PONY_VERSION-1-x86_64.pkg.tar.xz -u$BINTRAY_USER:$BINTRAY_TOKEN -H "X-Bintray-Publish: 1" https://api.bintray.com/content/$BINTRAY_USER/generic/ponyc-nightly-arch/$PONY_VERSION/
 if [[ $? -ne 0 ]]; then
 	echo "Error during upload of file"
 	exit 1
