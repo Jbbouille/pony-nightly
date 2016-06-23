@@ -35,6 +35,9 @@ fi
 
 mv ponyc-$PONY_VERSION-1-x86_64.pkg.tar.xz ponyc-$PONY_VERSION-x86_64.pkg.tar.xz
 
+# Remove existing ponyc
+rm -rf /usr/bin/ponyc /usr/lib/libponyc.a /usr/lib/libponyrt.a
+
 pacman -U --noconfirm ponyc-$PONY_VERSION-x86_64.pkg.tar.xz
 if [[ $? -ne 0 ]]; then
 	echo "Error during the building of Pony"
