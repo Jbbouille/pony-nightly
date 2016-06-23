@@ -33,7 +33,9 @@ if [[ $? -ne 0 ]]; then
 	exit 1
 fi
 
-pacman -U --noconfirm ponyc-$PONY_VERSION-1-x86_64.pkg.tar.xz
+mv ponyc-$PONY_VERSION-1-x86_64.pkg.tar.xz ponyc-$PONY_VERSION-x86_64.pkg.tar.xz
+
+pacman -U --noconfirm ponyc-$PONY_VERSION-x86_64.pkg.tar.xz
 if [[ $? -ne 0 ]]; then
 	echo "Error during the building of Pony"
 	exit 1
@@ -51,4 +53,14 @@ if [[ $? -ne 0 ]]; then
 	exit 1
 fi
 
-# Push to bintray
+curl -H "Content-Type: application/json" -u$BINTRAY_USER:$BINTRAY_TOKEN -X POST -d '{"name": "'$PONY_VERSION'","desc": "This is the ponyc nightly"}' https://api.bintray.com/packages/$BINTRAY_USER/generic/ponyc-nightly-arch/versions
+if [[ $? -ne 0 ]]; then
+	echo "Error during upload of version"
+	exit 1
+fi
+
+curl -T ponyc-$PONY_VERSION-x86_64.pkg.tar.xz -u$BINTRAY_USER:$BINTRAY_TOKEN -H "X-Bintray-Publish: 1" https://api.bintray.com/content/$BINTRAY_USER/generic/ponyc-nightly-arch/$PONY_VERSION/
+if [[ $? -ne 0 ]]; then
+	echo "Error during upload of file"
+	exit 1
+fi

@@ -55,7 +55,7 @@ if [[ $? -ne 0 ]]; then
 	exit 1
 fi
 
-curl -H "Content-Type: application/json" -u$BINTRAY_USER:$BINTRAY_TOKEN -X POST -d '{"name": "'$PONY_VERSION'","desc": "This is the ponyc nightly"}' https://api.bintray.com/packages/$BINTRAY_USER/deb/ponyc-nightly/versions
+curl -H "Content-Type: application/json" -u$BINTRAY_USER:$BINTRAY_TOKEN -X POST -d '{"name": "'$PONY_VERSION'","desc": "This is the ponyc nightly"}' https://api.bintray.com/packages/$BINTRAY_USER/rpm/ponyc-nightly/versions
 if [[ $? -ne 0 ]]; then
 	echo "Error during upload of version"
 	exit 1
