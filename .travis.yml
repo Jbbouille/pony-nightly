@@ -1,7 +1,7 @@
 sudo: required
 env:
   global:
-    - PONY_VERSION=$(date +%Y-%m-%d)
+    - PONY_VERSION=$(date +%Y_%m_%d)
 services:
 - docker
 install:
