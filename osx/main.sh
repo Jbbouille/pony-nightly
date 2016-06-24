@@ -2,13 +2,13 @@
 
 set -e
 
-make config=release -C /home/pony/ponyc
+make config=release -C ponyc/
 if [[ $? -ne 0 ]]; then
 	echo "Error during the building of Pony"
 	exit 1
 fi
 
-/home/pony/ponyc/build/release/ponyc /home/pony/ponyc/examples/helloworld
+ponyc/build/release/ponyc ponyc/examples/helloworld
 if [[ $? -ne 0 ]]; then
 	echo "Error during the building of Pony"
 	exit 1
@@ -20,19 +20,19 @@ if [[ $HELLO_WORLD != "Hello, world." ]]; then
 	exit 1
 fi
 
-mkdir -p /home/pony/ponyc-$PONY_VERSION/usr/bin
-mkdir -p /home/pony/ponyc-$PONY_VERSION/usr/lib
-cp /home/pony/ponyc/build/release/ponyc /home/pony/ponyc-$PONY_VERSION/usr/bin
-cp /home/pony/ponyc/build/release/libponyc.a /home/pony/ponyc-$PONY_VERSION/usr/lib
-cp /home/pony/ponyc/build/release/libponyrt.a /home/pony/ponyc-$PONY_VERSION/usr/lib
+mkdir -p ponyc-$PONY_VERSION/usr/bin
+mkdir -p ponyc-$PONY_VERSION/usr/lib
+cp ponyc/build/release/ponyc ponyc-$PONY_VERSION/usr/bin
+cp ponyc/build/release/libponyc.a ponyc-$PONY_VERSION/usr/lib
+cp ponyc/build/release/libponyrt.a ponyc-$PONY_VERSION/usr/lib
 
-fpm --deb-no-default-config-files -s dir -t deb -n ponyc -v $PONY_VERSION -C /home/pony/ponyc-$PONY_VERSION/
+fpm -s dir -t brew -n ponyc -v $PONY_VERSION -C ponyc-$PONY_VERSION/
 if [[ $? -ne 0 ]]; then
 	echo "Error during the building of Pony"
 	exit 1
 fi
 
-dpkg -i ponyc_"$PONY_VERSION"_amd64.deb
+brew install -f ponyc-$PONY_VERSION.tar.gz
 if [[ $? -ne 0 ]]; then
 	echo "Error during the building of Pony"
 	exit 1

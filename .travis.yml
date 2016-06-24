@@ -1,4 +1,6 @@
 sudo: required
+os:
+  - osx
 env:
   global:
     - PONY_VERSION=$(date +%Y%m%d)

@@ -7,7 +7,7 @@ RUN pacman --noconfirm -S pcre2 clang llvm llvm-libs ncurses gcc-libs zlib opens
 
 RUN mkdir /home/pony
 
-RUN git clone https://github.com/ponylang/ponyc.git /home/pony/ponyc
+RUN git clone --depth 30 https://github.com/ponylang/ponyc.git /home/pony/ponyc
 
 COPY main.sh /home/pony/
 
