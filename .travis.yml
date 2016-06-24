@@ -1,6 +1,7 @@
 sudo: required
 os:
   - osx
+  - linux
 env:
   global:
     - PONY_VERSION=$(date +%Y%m%d)
