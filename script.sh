@@ -9,7 +9,5 @@ if [[ $TRAVIS_OS_NAME = "linux" ]]; then
 fi
 
 if [[ $TRAVIS_OS_NAME = "osx" ]]; then
-	brew update
-    brew install homebrew/versions/llvm38 pcre2 libressl ruby
-    gem install fpm
+	bash osx/main.sh
 fi
