@@ -2,13 +2,13 @@
 
 set -e
 
-if [[ $TRAVIS_OS_NAME = "linux"]]; then
+if [[ $TRAVIS_OS_NAME = "linux" ]]; then
 	docker run -e PONY_VERSION=$PONY_VERSION -e BINTRAY_TOKEN=$BINTRAY_TOKEN -e BINTRAY_USER=$BINTRAY_USER ponyc-archlinux
 	docker run -e PONY_VERSION=$PONY_VERSION -e BINTRAY_TOKEN=$BINTRAY_TOKEN -e BINTRAY_USER=$BINTRAY_USER ponyc-fedora
 	docker run -e PONY_VERSION=$PONY_VERSION -e BINTRAY_TOKEN=$BINTRAY_TOKEN -e BINTRAY_USER=$BINTRAY_USER ponyc-ubuntu
 fi
 
-if [[ $TRAVIS_OS_NAME = "osx"]]; then
+if [[ $TRAVIS_OS_NAME = "osx" ]]; then
 	brew update
     brew install homebrew/versions/llvm38 pcre2 libressl ruby
     gem install fpm
