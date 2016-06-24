@@ -20,6 +20,7 @@ if [[ $HELLO_WORLD != "Hello, world." ]]; then
 	exit 1
 fi
 
+ls -la
 mkdir -p ponyc-$PONY_VERSION/usr/bin
 mkdir -p ponyc-$PONY_VERSION/usr/lib
 cp ponyc/build/release/ponyc ponyc-$PONY_VERSION/usr/bin
