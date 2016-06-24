@@ -14,13 +14,12 @@ if [[ $? -ne 0 ]]; then
 	exit 1
 fi
 
-HELLO_WORLD=$(/helloworld)
+HELLO_WORLD=$(./helloworld)
 if [[ $HELLO_WORLD != "Hello, world." ]]; then
 	echo "Error during the building of Pony"
 	exit 1
 fi
 
-ls -la
 mkdir -p ponyc-$PONY_VERSION/usr/bin
 mkdir -p ponyc-$PONY_VERSION/usr/lib
 cp ponyc/build/release/ponyc ponyc-$PONY_VERSION/usr/bin
