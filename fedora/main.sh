@@ -27,7 +27,7 @@ cp /home/pony/ponyc/build/release/ponyc /home/pony/ponyc-$PONY_VERSION/usr/bin
 cp /home/pony/ponyc/build/release/libponyc.a /home/pony/ponyc-$PONY_VERSION/usr/lib
 cp /home/pony/ponyc/build/release/libponyrt.a /home/pony/ponyc-$PONY_VERSION/usr/lib
 
-fpm -s dir -t rpm -n ponyc -v $PONY_VERSION -C /home/pony/ponyc-$PONY_VERSION/
+fpm -s dir -t rpm -n ponyc -v $PONY_VERSION -C /home/pony/ponyc-$PONY_VERSION/ -d "openssl-devel" -d "pcre2"
 if [[ $? -ne 0 ]]; then
 	echo "Error during the building of Pony"
 	exit 1

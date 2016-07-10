@@ -1,0 +1,27 @@
+version: 1.0.{build}
+image: Visual Studio 2015
+environment:
+  BINTRAY_TOKEN:
+    secure: ygxH+xCHwlCcWSfI557fhQVCQ6IcjwkAlz5dPTr6VJNmoi/6vuz1bekC+SLL9ToX
+  BINTRAY_USER:
+    secure: PpL/fbiTGRPEhjjcjoQjxg==
+  matrix:
+    - llvm: 3.8.0
+configuration:
+  - Debug
+  - Release
+cache:
+  - C:\LLVM-%llvm%\ -> .appveyor.yml
+  - C:\premake5.exe -> .appveyor.yml
+  - C:\ponyc-windows-libs\ -> .appveyor.yml
+clone_depth: 5
+clone_folder: C:\projects\ponyc
+install:
+  - ps: C:\projects\ponyc\windows\install.ps
+before_build:
+  - ps: C:\projects\ponyc\windows\before_build.ps
+build:
+  project: work\vs2015\ponyc.sln
+  verbosity: minimal
+test_script:
+  - ps: C:\projects\ponyc\windows\test_script.ps

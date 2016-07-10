@@ -26,7 +26,7 @@ cp ponyc/build/release/ponyc ponyc-$PONY_VERSION/usr/bin
 cp ponyc/build/release/libponyc.a ponyc-$PONY_VERSION/usr/lib
 cp ponyc/build/release/libponyrt.a ponyc-$PONY_VERSION/usr/lib
 
-fpm -s dir -t osxpkg -n ponyc -v $PONY_VERSION -C ponyc-$PONY_VERSION/
+fpm -s dir -t osxpkg -n ponyc -v $PONY_VERSION -C ponyc-$PONY_VERSION/ -d "pcre2" -d "libressl"
 if [[ $? -ne 0 ]]; then
 	echo "Error during the building of Pony"
 	exit 1

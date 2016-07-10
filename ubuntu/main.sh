@@ -26,7 +26,7 @@ cp /home/pony/ponyc/build/release/ponyc /home/pony/ponyc-$PONY_VERSION/usr/bin
 cp /home/pony/ponyc/build/release/libponyc.a /home/pony/ponyc-$PONY_VERSION/usr/lib
 cp /home/pony/ponyc/build/release/libponyrt.a /home/pony/ponyc-$PONY_VERSION/usr/lib
 
-fpm --deb-no-default-config-files -s dir -t deb -n ponyc -v $PONY_VERSION -C /home/pony/ponyc-$PONY_VERSION/
+fpm --deb-no-default-config-files -s dir -t deb -n ponyc -v $PONY_VERSION -C /home/pony/ponyc-$PONY_VERSION/ -d "libpcre2-16-0" -d "libssl-dev"
 if [[ $? -ne 0 ]]; then
 	echo "Error during the building of Pony"
 	exit 1
