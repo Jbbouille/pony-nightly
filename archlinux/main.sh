@@ -27,7 +27,7 @@ cp /home/pony/ponyc/build/release/ponyc /home/pony/ponyc-$PONY_VERSION/usr/bin
 cp /home/pony/ponyc/build/release/libponyc.a /home/pony/ponyc-$PONY_VERSION/usr/lib
 cp /home/pony/ponyc/build/release/libponyrt.a /home/pony/ponyc-$PONY_VERSION/usr/lib
 
-ruby ~/.gem/ruby/2.3.0/gems/fpm-1.6.1/bin/fpm -s dir -t pacman -n ponyc -v $PONY_VERSION -C /home/pony/ponyc-$PONY_VERSION/ -d "pcre2" -d "openssl"
+ruby ~/.gem/ruby/2.3.0/gems/fpm-1.6.2/bin/fpm -s dir -t pacman -n ponyc -v $PONY_VERSION -C /home/pony/ponyc-$PONY_VERSION/ -d "pcre2" -d "openssl"
 if [[ $? -ne 0 ]]; then
 	echo "Error during the building of Pony"
 	exit 1

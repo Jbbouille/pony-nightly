@@ -17,11 +17,11 @@ cache:
 clone_depth: 5
 clone_folder: C:\projects\ponyc
 install:
-  - ps: C:\projects\ponyc\windows\install.ps
+  - ps: C:\projects\ponyc\windows\install.ps1
 before_build:
-  - ps: C:\projects\ponyc\windows\before_build.ps
+  - ps: C:\projects\ponyc\windows\before_build.ps1
 build:
   project: work\vs2015\ponyc.sln
   verbosity: minimal
 test_script:
-  - ps: C:\projects\ponyc\windows\test_script.ps
+  - ps: C:\projects\ponyc\windows\test_script.ps1
