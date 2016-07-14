@@ -8,7 +8,6 @@ environment:
   matrix:
     - llvm: 3.8.0
 configuration:
-  - Debug
   - Release
 cache:
   - C:\LLVM-%llvm%\ -> .appveyor.yml
@@ -21,7 +20,7 @@ install:
 before_build:
   - ps: C:\projects\ponyc-nighly\windows\before_build.ps1
 build:
-  project: work\vs2015\ponyc.sln
+  project: C:\projects\ponyc\work\vs2015\ponyc.sln
   verbosity: minimal
 test_script:
   - ps: C:\projects\ponyc-nighly\windows\test_script.ps1
