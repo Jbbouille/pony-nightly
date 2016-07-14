@@ -14,14 +14,14 @@ cache:
   - C:\LLVM-%llvm%\ -> .appveyor.yml
   - C:\premake5.exe -> .appveyor.yml
   - C:\ponyc-windows-libs\ -> .appveyor.yml
-clone_depth: 5
-clone_folder: C:\projects\ponyc
+clone_depth: 2
+clone_folder: C:\projects\ponyc-nighly
 install:
-  - ps: C:\projects\ponyc\windows\install.ps1
+  - ps: C:\projects\ponyc-nighly\windows\install.ps1
 before_build:
-  - ps: C:\projects\ponyc\windows\before_build.ps1
+  - ps: C:\projects\ponyc-nighly\windows\before_build.ps1
 build:
   project: work\vs2015\ponyc.sln
   verbosity: minimal
 test_script:
-  - ps: C:\projects\ponyc\windows\test_script.ps1
+  - ps: C:\projects\ponyc-nighly\windows\test_script.ps1
