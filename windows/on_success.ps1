@@ -1,1 +1,1 @@
-makensis.exe C:\projects\ponyc-nighly\windows\ponyc-installer.nsi
+#makensis.exe C:\projects\ponyc-nighly\windows\ponyc-installer.nsi
