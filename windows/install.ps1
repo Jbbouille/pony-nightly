@@ -1,6 +1,6 @@
 cd C:\
 $premakeInstalled = Test-Path C:\premake5.exe
-$llvmInstalled = Test-Path C:\LLVM
+$llvmInstalled = Test-Path C:\LLVM-3.8.0
 $libsInstalled = Test-Path C:\ponyc-windows-libs
 
 if(-Not $premakeInstalled)
