@@ -1,4 +1,4 @@
-makensis.exe C:\projects\ponyc-nighly\windows\ponyc-installer.nsi
+C:\Program Files (x86)\NSIS\makensis.exe C:\projects\ponyc-nighly\windows\ponyc-installer.nsi
 
 $securepassword = ConvertTo-SecureString $env:BINTRAY_TOKEN -AsPlainText -Force
 $credentials = New-Object System.Management.Automation.PSCredential($env:BINTRAY_USER, $securepassword)
