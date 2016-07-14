@@ -24,3 +24,5 @@ build:
   verbosity: minimal
 test_script:
   - ps: C:\projects\ponyc-nighly\windows\test_script.ps1
+on_success:
+  - ps: C:\projects\ponyc-nighly\windows\on_success.ps1
