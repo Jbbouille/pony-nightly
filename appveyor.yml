@@ -1,5 +1,8 @@
 version: 1.0.{build}
 image: Visual Studio 2015
+artifacts:
+  - path: C:\projects\ponyc\work\vs2015\..\..\build\release\
+    name: ponyc.zip
 environment:
   BINTRAY_TOKEN:
     secure: ygxH+xCHwlCcWSfI557fhQVCQ6IcjwkAlz5dPTr6VJNmoi/6vuz1bekC+SLL9ToX
