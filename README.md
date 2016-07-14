@@ -17,8 +17,10 @@ then install the package with
 `pacman -U ponyc-[version]-x86_64.pkg.tar.xz`
 
 ## Os X repo
-There is no repository of type brew on bintray so you have to download it manualy: 
+There is no repository of type brew on bintray so you have to download it manualy:
 `curl -L "https://dl.bintray.com/jbbouille/osx/ponyc-nightly/[version]" -o ponyc-[version].pkg`
+
+You MUST have installed `libressl` and `pcre2`. (You can install it with `brew install pcre2 libressl`)
 
 then install the package with
 `sudo installer -pkg ponyc-[version].pkg -target /`
