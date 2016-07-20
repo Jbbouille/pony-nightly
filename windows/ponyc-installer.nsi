@@ -16,10 +16,6 @@ SectionEnd
 
 Section "Uninstall"
 Delete $INSTDIR\*
-; delete variable
-DeleteRegValue ${env_hklm} LIB
-; make sure windows knows about the change
-SendMessage ${HWND_BROADCAST} ${WM_WININICHANGE} 0 "STR:Environment" /TIMEOUT=5000
 SectionEnd
 
 Section "Add install dir to PATH"
