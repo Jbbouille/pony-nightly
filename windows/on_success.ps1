@@ -11,6 +11,6 @@ $hash = @{  name    = $PONY_VERSION;
 
 $JSON = $hash | convertto-json 
 
-Invoke-WebRequest -Uri "https://api.bintray.com/packages/$BINTRAY_USER/osx/ponyc-nightly/versions" -Body $JSON -Credential $credentials -Method Post -ContentType "application/json"
+Invoke-WebRequest -Uri "https://api.bintray.com/packages/$env:$BINTRAY_USER/windows/ponyc-nightly/versions" -Body $JSON -Credential $credentials -Method Post -ContentType "application/json"
 Invoke-WebRequest -Uri "https://api.bintray.com/content/$env:BINTRAY_USER/windows/ponyc-nightly/$PONY_VERSION/" -Credential $credentials -Method Post -InFile "C:\projects\ponyc-nighly\windows\ponyc-installer.exe"
 
