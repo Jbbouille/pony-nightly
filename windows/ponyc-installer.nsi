@@ -1,6 +1,5 @@
 OutFile "ponyc-installer.exe"
 
-CreateDirectory $PROGRAMFILES\ponyc-nightly
 InstallDir $PROGRAMFILES\ponyc-nightly
 RequestExecutionLevel user
 
