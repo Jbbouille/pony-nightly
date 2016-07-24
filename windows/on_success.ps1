@@ -19,5 +19,5 @@ $uriVersion = "https://api.bintray.com/packages/"+${env:BINTRAY_USER}+"/windows/
 $uriPostFile = "https://api.bintray.com/content/"+${env:BINTRAY_USER}+"/windows/ponyc-nightly/"+$PONY_VERSION+"/"
 
 Invoke-WebRequest -Uri $uriVersion -Body $JSON -ContentType "application/json" -Headers $headers -Method Post
-Invoke-WebRequest -Uri $uriPostFile -Credential $credentials -InFile "C:\projects\ponyc-nighly\windows\ponyc-installer.exe" -Method Post
+Invoke-WebRequest -Uri $uriPostFile -Headers $headers -InFile "C:\projects\ponyc-nighly\windows\ponyc-installer.exe" -Method Post
 
