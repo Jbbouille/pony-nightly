@@ -7,7 +7,7 @@ environment:
   BINTRAY_TOKEN:
     secure: ygxH+xCHwlCcWSfI557fhQVCQ6IcjwkAlz5dPTr6VJNmoi/6vuz1bekC+SLL9ToX
   BINTRAY_USER:
-    secure: PpL/fbiTGRPEhjjcjoQjxg==
+    secure: UCzmJrMk3zHBa2XZ0MINSA==
   matrix:
     - llvm: 3.8.0
 configuration:

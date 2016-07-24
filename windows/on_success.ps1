@@ -1,16 +1,23 @@
 cd 'C:\Program Files (x86)\NSIS\'
 .\makensis.exe C:\projects\ponyc-nighly\windows\ponyc-installer.nsi
 
-$securepassword = ConvertTo-SecureString $env:BINTRAY_TOKEN -AsPlainText -Force
-$credentials = New-Object System.Management.Automation.PSCredential($env:BINTRAY_USER, $securepassword)
+$userPassword = "${env:BINTRAY_USER}:${env:BINTRAY_TOKEN}"
+$bytes = [System.Text.Encoding]::ASCII.GetBytes($userPassword)
+$base64 = [System.Convert]::ToBase64String($bytes)
+$basicAuthValue = "Basic $base64"
+$headers = @{ Authorization = $basicAuthValue }
+
 $PONY_VERSION = Get-Date -format yyyyMMdd
 
-$hash = @{  name    = $PONY_VERSION; 
+$hash = @{  name = $PONY_VERSION; 
             desc = "This is the ponyc nightly"
             }
 
 $JSON = $hash | convertto-json 
 
-Invoke-WebRequest -Uri "https://api.bintray.com/packages/"+${env:$BINTRAY_USER}+"/windows/ponyc-nightly/versions" -Body $JSON -ContentType "application/json" -Credential $credentials -Method Post
-Invoke-WebRequest -Uri "https://api.bintray.com/content/"+${env:BINTRAY_USER}+"/windows/ponyc-nightly/"+$PONY_VERSION+"/" -Credential $credentials -InFile "C:\projects\ponyc-nighly\windows\ponyc-installer.exe" -Method Post
+$uriVersion = "https://api.bintray.com/packages/"+${env:BINTRAY_USER}+"/windows/ponyc-nightly/versions"
+$uriPostFile = "https://api.bintray.com/content/"+${env:BINTRAY_USER}+"/windows/ponyc-nightly/"+$PONY_VERSION+"/"
+
+Invoke-WebRequest -Uri $uriVersion -Body $JSON -ContentType "application/json" -Headers $headers -Method Post
+Invoke-WebRequest -Uri $uriPostFile -Credential $credentials -InFile "C:\projects\ponyc-nighly\windows\ponyc-installer.exe" -Method Post
 
