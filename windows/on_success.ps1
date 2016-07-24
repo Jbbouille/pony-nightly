@@ -5,12 +5,14 @@ $userPassword = "${env:BINTRAY_USER}:${env:BINTRAY_TOKEN}"
 $bytes = [System.Text.Encoding]::ASCII.GetBytes($userPassword)
 $base64 = [System.Convert]::ToBase64String($bytes)
 $basicAuthValue = "Basic $base64"
-$headers = @{ Authorization = $basicAuthValue }
+$headers = @{   Authorization = $basicAuthValue;
+                "X-Bintray-Publish" = 1;
+                }
 
 $PONY_VERSION = Get-Date -format yyyyMMdd
 
 $hash = @{  name = $PONY_VERSION; 
-            desc = "This is the ponyc nightly"
+            desc = "This is the ponyc nightly";
             }
 
 $JSON = $hash | convertto-json 
